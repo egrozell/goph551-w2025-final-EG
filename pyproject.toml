@@ -11,7 +11,10 @@ description="devito project implementation"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
-"Devito",
+"devito",
+"numpy",
+"sympy",
+"matplotlib",
 ]
 classifiers = [
 "Programming Language :: Python :: 3",
