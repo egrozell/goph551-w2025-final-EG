@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+[project]
+name = "final project"
+version = "0.0.1"
+authors = [
+{ name="Ethan Grozell", email="ethan.grozell@ucalgary.ca" },
+]
+description="devito project implementation"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+"Devito",
+]
+classifiers = [
+"Programming Language :: Python :: 3",
+"Operating System :: linux",
+"License :: GNU General Public License v3",
+]
+[project.urls]
+"Homepage" = "https://github.com/egrozell/goph551-w2025-final-EG"
