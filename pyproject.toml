@@ -15,6 +15,13 @@ dependencies = [
 "numpy",
 "sympy",
 "matplotlib",
+"gempy",
+"jinja2",
+"ipyvtklink",
+"pyvirtualdisplay",
+"scipy",
+"pytest",
+"pyvista",
 ]
 classifiers = [
 "Programming Language :: Python :: 3",
