@@ -1,7 +1,7 @@
 import devito
 from examples.seismic.source import RickerSource, Receiver, TimeAxis
 from src.final_project.model import demo_model
-import numpy as np 
+import numpy as np
 import matplotlib.pyplot as plt
 
 from sympy import init_printing, latex
@@ -16,6 +16,7 @@ nlayers = 5
 so = 8
 model = demo_model(vp_top=1.0, vp_bottom=3.5, nlayers=nlayers,
                    shape=(301, 301), spacing=(10., 10.), space_order=so)
+print(model.origin)
 aspect_ratio = model.shape[0] / model.shape[1]
 plt_config = {'cmap': 'jet', 'extent': [model.origin[0], model.origin[0] + model.domain_size[0],
                                         model.origin[1] + model.domain_size[1], model.origin[1]]}

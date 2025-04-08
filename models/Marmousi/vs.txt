@@ -1,0 +1,6 @@
+vs.dim:
+    in="/home/dtrad/data/tmp/book/dtradcuda/efwimarm2orig/vs.rsf@"
+    esize=4 type=float form=native 
+    n1=934         d1=4           o1=0          label1="Depth" unit1="m" 
+    n2=4534        d2=4           o2=0          label2="Distance" unit2="m" 
+	4234756 elements 16939024 bytes

@@ -13,6 +13,33 @@ def Gardners(vp, normalize=True):
 
 
 def demo_model(vp_top=1.5, vp_bottom=3.5, **kwargs):
+    """
+    inputs
+    ______
+    vp_top: the p velocity for the top of the model
+    vp_bottom : the p velocity for the bottom of the model
+    **kwargs: following additional arguements
+    space_order: the dimension of the model this case 2d
+    shape: number of grid points (nx, nz)
+    spacing: grid spacing in m
+    origin: the location of the top left corner
+    nbl: Number of outer layers (such as absorbing layers for boundary damping)
+    nlayers: Number of layers for the model
+
+    outputs
+    _______
+    space_order: the dimension of the model
+    vp: the p velocity values
+    vs: the s velocity values
+    b: the bulk density values
+    spacing: grid spacing in m
+    origin: the location of the top left corner
+    nbl: Number of outer layers (such as absorbing layers for boundary damping)
+    **kwargs: any additional arguements
+
+    raises
+    ______
+    """
     space_order = kwargs.pop('space_order', 2)
     shape = kwargs.pop('shape', (101, 101))
     spacing = kwargs.pop('spacing', tuple([10. for _ in shape]))
