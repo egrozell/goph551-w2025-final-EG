@@ -18,7 +18,7 @@ def model(directory, **kwargs):
 
     vp = properties[file.index('vp')] * 1e-3
     vs = properties[file.index('vs')] * 1e-3
-    rho = properties[file.index('rho')] / 5
+    rho = 1 / properties[file.index('rho')]
     print(rho)
     return SeismicModel(space_order=space_order, vp=vp, vs=vs, b=rho,
                         origin=origin, shape=shape,
@@ -86,8 +86,8 @@ def get_dims(directory):
                 ni = line.find("=") + 1
                 ne = line.find(" ", ni)
                 dim.append(int(line[ni:ne]))
-            h = int((dim[0] - 329))
-            w = int((dim[1] - 3629))
+            h = int((dim[0] - 333))
+            w = int((dim[1] - 3633))
 
     return h, w
 
@@ -96,8 +96,8 @@ def read_bin(directory):
     file = find_files(directory)
     h, w = get_dims(directory)
     print(f'dims {w} w, {h} h')
-    h1 = int((h) * 1 + 329)
-    w1 = int((w) * 1 + 3629)
+    h1 = int((h) * 1 + 333)
+    w1 = int((w) * 1 + 3633)
     print(f'dims {w1} w, {h1} h')
     prop = []
     max = []
@@ -106,7 +106,7 @@ def read_bin(directory):
     for i in range(len(file)):
         with open(directory + file[i] + '.bin', 'rb') as f:
             values = np.fromfile(f, dtype=np.float32, count=h1 * w1).reshape(w1, h1)
-        smaller = values[2000:-1629, 329:]
+        smaller = values[1633:-2000, 333:]
         even_smaller = smaller[::1, ::1]
         # odd_small = even_smaller[0:-1, 0:-1]
         prop.append(even_smaller)
