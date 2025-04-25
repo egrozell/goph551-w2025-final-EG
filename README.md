@@ -6,7 +6,7 @@
 
 *Semester:* Winter 2025
 
-Devito implmentation
+Devito Implementation of the Elastic Equation
 
 Use:
 
@@ -21,4 +21,9 @@ enter environment:
 install dependencies:
 
     python3 -m pip install -e . 
+run jupiter notebook using prefered method for file:
+06_elastic_varying_parameters.out.ipynb
 
+default option:
+python3 -m pip install notebook
+python3 -m notebook

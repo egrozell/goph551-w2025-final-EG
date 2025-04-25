@@ -1,5 +1,6 @@
 import devito
 from examples.seismic.source import RickerSource, Receiver, TimeAxis
+from final_project.ploting import plot_image
 # from src.final_project.model import demo_model
 import final_project.model_from_bin as bin_model
 import numpy as np
@@ -20,7 +21,7 @@ model = bin_model.model(dir, spacing=(4., 4.), space_order=so)
 print(model.origin)
 aspect_ratio = model.shape[0] / model.shape[1]
 plt_config = {'cmap': 'RdBu', 'extent': [model.origin[0], model.origin[0] + model.domain_size[0],
-                                        model.origin[1] + model.domain_size[1], model.origin[1]]}
+                                         model.origin[1] + model.domain_size[1], model.origin[1]]}
 
 fig, ax = plt.subplots(nrows=3, ncols=1, figsize=(15, 15))
 slices = [slice(model.nbl, -model.nbl), slice(model.nbl, -model.nbl)]
@@ -50,3 +51,22 @@ ax[2].set_aspect('auto')
 
 plt.savefig("./figures/Marmousi_elastic_model_physical_properties.tiff")
 plt.tight_layout()
+
+# Time Step
+t0, tn = 0., 2000.
+dt = model.critical_dt
+time_range = TimeAxis(start=t0, stop=tn, step=dt)
+
+# Source location
+src = RickerSource(name='src', grid=model.grid, f0=0.015, time_range=time_range)
+src.coordinates.data[:] = [10000., 500.]
+
+# Now we create the velocity and pressure fields
+
+x, z = model.grid.dimensions
+t = model.grid.stepping_dim
+time = model.grid.time_dim
+s = time.spacing
+
+v = devito.VectorTimeFunction(name='v', grid=model.grid, space_order=so, time_order=1)
+tau = devito.TensorTimeFunction(name='t', grid=model.grid, space_order=so, time_order=1)
